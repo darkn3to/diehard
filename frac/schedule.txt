@@ -1,0 +1,65 @@
+/******************************************************************************
+
+Welcome to GDB Online.
+  GDB online is an online compiler and debugger tool for C, C++, Python, PHP, Ruby, 
+  C#, OCaml, VB, Perl, Swift, Prolog, Javascript, Pascal, COBOL, HTML, CSS, JS
+  Code, Compile, Run and Debug online from anywhere in world.
+
+******************************************************************************
+#include <stdio.h>
+#include <algorithm>
+#include <vector>
+#include <iostream>
+using namespace std;
+int main()
+{
+    vector<int> s={3,5,1,5,8,0};
+    vector<int> e={4,7,2,9,9,6};
+    vector<pair<int, int>> vp;
+    for (int i=0; i<s.size(); i++) vp.push_back({e[i], s[i]});
+    sort(vp.begin(), vp.end());
+    int act=1, last=vp[0].first;
+    for (int i=1; i<vp.size(); i++) {
+        if (vp[i].second>=last){
+            act++;
+            last=vp[i].first;
+        }
+    }
+    cout << act;
+}*/
+/******************************************************************************
+
+Welcome to GDB Online.
+  GDB online is an online compiler and debugger tool for C, C++, Python, PHP, Ruby, 
+  C#, OCaml, VB, Perl, Swift, Prolog, Javascript, Pascal, COBOL, HTML, CSS, JS
+  Code, Compile, Run and Debug online from anywhere in world.
+
+*******************************************************************************/
+#include <stdio.h>
+#include <algorithm>
+#include <vector>
+#include <iostream>
+using namespace std;
+int main()
+{
+    vector<int> s={60,100,120};
+    vector<int> e={10,20,30};
+    int c=50;
+    vector<pair<double, pair<int, int>>> vp;
+    for (int i=0; i<s.size(); i++) {
+        vp.push_back({(double)s[i]/e[i], {s[i], e[i]}});
+    }
+    double prof=0.0;
+    sort(vp.rbegin(), vp.rend());
+    for (int i=0;i<vp.size();i++) {
+        if (vp[i].second.second<=c) {
+            prof+=vp[i].second.first;
+            c-=vp[i].second.second;
+        }
+        else {
+            prof+=(vp[i].first*c);
+            c=0;
+        }
+    }
+    cout << prof;
+}
